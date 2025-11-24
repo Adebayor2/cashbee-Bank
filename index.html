@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SecureBank — Hero</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+  <!-- Top nav -->
+  <nav class="navbar navbar-expand-lg navbar-light px-3" aria-label="Top navigation">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <span class="badge bg-primary rounded-pill p-2"><i class="bi bi-bank2"></i></span>
+        <span class="fw-bold text-dark" style="color:#0b3a8f !important">CashBee Bank</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+        <ul class="navbar-nav align-items-center me-3">
+          <li class="nav-item"><a class="nav-link text-dark" href="#">Personal</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="#">Business</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="#">Loans</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="#">Investments</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="#">About</a></li>
+        </ul>
+
+        <div class="d-flex gap-2">
+          <a class="btn btn-link text-dark text-decoration-none" href="./sign in page/signin.html">Sign In</a>
+          <a class="btn btn-primary" href="./sign up page/sign up.html" role="button">Open Account</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- LEFT: text -->
+        <div class="col-lg-7 col-md-8 fade-up">
+          <h1 class="display-4">
+            Banking Made<br />
+            <span class="highlight">Simple &amp; Secure</span>
+          </h1>
+
+          <p class="lead">
+            Experience the future of banking with our cutting-edge digital platform. Manage your finances, invest wisely, and achieve your goals with confidence.
+          </p>
+
+          <div class="d-flex gap-3 cta-group">
+            <a href="./sign up page/sign up.html" class="btn btn-light btn-lg shadow-sm">Open Account Today</a>
+            <a href="#" class="btn btn-outline-soft btn-lg">Learn More</a>
+          </div>
+
+          <!-- small proofs -->
+          <div class="d-flex gap-3 mt-4 small-muted">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-shield-check me-2" style="font-size:1.05rem"></i> Secure, insured accounts
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="bi bi-graph-up me-2" style="font-size:1.05rem"></i> Smart savings & insights
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: account card -->
+        <div class="col-lg-5 col-md-4">
+          <div class="card-wrapper">
+            <div class="account-card fade-up">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <div class="small-muted text-light">Account Balance</div>
+                </div>
+                <div>
+                  <button class="btn btn-sm btn-outline-light" aria-pressed="false" title="Toggle balance visibility">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-3 account-balance">
+                #24,580.38
+              </div>
+
+              <div class="row mt-3 g-3">
+                <div class="col-6">
+                  <div class="stat-box bg-tertiary">
+                    <div class="small-muted ">Income</div>
+                    <div class="fw-bold  text-success">+ #5,240</div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="stat-box b">
+                    <div class="small-muted">Expenses</div>
+                    <div class="stat-amount text-danger">- #1,180</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 d-flex gap-2">
+                <a class="btn btn-sm btn-light flex-grow-1" href="#"><i class="bi bi-arrow-down-right me-1"></i> Transfer</a>
+                <a class="btn btn-sm btn-outline-soft" href="#"><i class="bi bi-file-earmark-text me-1"></i> Statements</a>
+              </div>
+            </div> <!-- account card -->
+          </div>
+        </div>
+
+      </div> <!-- row -->
+    </div> <!-- container -->
+  </header>
+  <section class="py-5 text-center bg-tertiary">
+    <div class="container">
+
+        <h2 class="fw-bold mb-3">Why Choose SecureBank?</h2>
+        <p class="text-muted mb-5">
+            We provide comprehensive banking solutions with industry-leading security and
+            innovative features designed for your financial success.
+        </p>
+
+        <div class="row g-4">
+
+            <!-- Bank-Level Security -->
+            <div class="col-md-4">
+                <div class="feature-card text-start">
+                    <div class="icon-box">
+                        <i class="bi bi-shield-lock-fill"></i>
+                    </div>
+                    <h5 class="fw-bold">Bank-Level Security</h5>
+                    <p class="text-muted">
+                        Your money and data are protected with military-grade encryption,
+                        biometric authentication, and 24/7 fraud monitoring.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mobile First -->
+            <div class="col-md-4">
+                <div class="feature-card text-start">
+                    <div class="icon-box">
+                        <i class="bi bi-phone-fill"></i>
+                    </div>
+                    <h5 class="fw-bold">Mobile First</h5>
+                    <p class="text-muted">
+                        Manage your finances anywhere with our award-winning app featuring
+                        instant transfers and real-time notifications.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Smart Insights -->
+            <div class="col-md-4 ">
+                <div class="feature-card text-start">
+                    <div class="icon-box">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <h5 class="fw-bold">Smart Insights</h5>
+                    <p class="text-muted">
+                        AI-powered spending analysis and personalized advice to help you
+                        make better money decisions.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<section class="py-5 text-center">
+    <div class="container">
+
+        <h2 class="fw-bold mb-2 fade-up">Complete Banking Solutions</h2>
+        <p class="text-muted mb-5 fade-up delay-1">
+            From everyday banking to wealth management, we've got you covered.
+        </p>
+
+        <div class="row g-4">
+
+            <!-- Credit Cards -->
+            <div class="col-md-3 col-sm-6 fade-up delay-1">
+                <div class="solution-card">
+                    <div class="icon-box bg-blue">
+                        <i class="bi bi-credit-card-fill"></i>
+                    </div>
+                    <h6 class="fw-bold">Credit Cards</h6>
+                    <p class="text-muted mb-0">Rewards and cashback on every purchase</p>
+                </div>
+            </div>
+
+            <!-- Home Loans -->
+            <div class="col-md-3 col-sm-6 fade-up delay-2">
+                <div class="solution-card">
+                    <div class="icon-box bg-green">
+                        <i class="bi bi-house-door-fill"></i>
+                    </div>
+                    <h6 class="fw-bold">Home Loans</h6>
+                    <p class="text-muted mb-0">Competitive rates for your dream home</p>
+                </div>
+            </div>
+
+            <!-- Investments -->
+            <div class="col-md-3 col-sm-6 fade-up delay-3">
+                <div class="solution-card">
+                    <div class="icon-box bg-purple">
+                        <i class="bi bi-pie-chart-fill"></i>
+                    </div>
+                    <h6 class="fw-bold">Investments</h6>
+                    <p class="text-muted mb-0">Grow your wealth with smart investing</p>
+                </div>
+            </div>
+
+            <!-- Business Banking -->
+            <div class="col-md-3 col-sm-6 fade-up delay-4">
+                <div class="solution-card">
+                    <div class="icon-box bg-orange">
+                        <i class="bi bi-building-fill"></i>
+                    </div>
+                    <h6 class="fw-bold">Business Banking</h6>
+                    <p class="text-muted mb-0">Solutions for growing businesses</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section text-center">
+    <h2 class="fw-bold fade-up">Ready to Start Your Financial Journey?</h2>
+    <p class="fade-up delay-1">
+        Join millions of satisfied customers and experience banking the way it should be.
+    </p>
+
+    <div class="mt-4 fade-up delay-2 d-flex justify-content-center gap-3 flex-wrap">
+        <button class="cta-btn btn-primary border-0">Open Account Now</button>
+        <button class="cta-btn btn-outline-light">Schedule Consultation</button>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container pb-4">
+        <div class="row">
+
+            <!-- Logo & Description -->
+            <div class="col-md-4 mb-4 fade-up">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-bank2 fs-3 me-2 text-primary"></i>
+                    <h5 class="text-white fw-bold mb-0">SecureBank</h5>
+                </div>
+                <p style="max-width: 260px;">
+                    Building financial futures with innovative banking solutions and
+                    unmatched security.
+                </p>
+            </div>
+
+            <!-- Products -->
+            <div class="col-md-3 mb-4 fade-up delay-1">
+                <h6>Products</h6>
+                <ul class="list-unstyled mt-3">
+                    <li><a href="#">Checking Accounts</a></li>
+                    <li><a href="#">Savings Accounts</a></li>
+                    <li><a href="#">Credit Cards</a></li>
+                    <li><a href="#">Loans</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div class="col-md-3 mb-4 fade-up delay-2">
+                <h6>Support</h6>
+                <ul class="list-unstyled mt-3">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+
+            <!-- Social -->
+            <div class="col-md-2 mb-4 fade-up delay-3">
+                <h6>Connect</h6>
+                <div class="d-flex gap-2 mt-3">
+                    <a class="social-icon" href="#"><i class="bi bi-facebook"></i></a>
+                    <a class="social-icon" href="#"><i class="bi bi-twitter"></i></a>
+                    <a class="social-icon" href="#"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+    
+        <div class="footer-bottom fade-up delay-3">
+            <span>© 2024 SecureBank. All rights reserved. Member FDIC.</span>
+        </div>
+    </div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

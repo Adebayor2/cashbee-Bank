@@ -1,0 +1,31 @@
+
+
+.left-panel {
+  background: linear-gradient(135deg, #023aab, #3a96f9);
+}
+ .left-panel h2 {
+  font-weight: 700;
+} 
+
+.left-panel p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.form-control {
+  height: 45px;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  background-color: #0d2f91;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0b2573;
+}
+
+.left-panel i {
+  font-size: 1.2rem;
+}
