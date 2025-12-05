@@ -21,10 +21,10 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="sign up.css" />
+  <link rel="stylesheet" href="sign_up.css" />
 </head>
 <body>
-  <div class="container-fluid vh-100">
+  <div class="container-fluid vh-100 ">
     <div class="row h-100">
       <!-- Left Side -->
       <div class="col-md-6 d-none d-md-flex flex-column justify-content-center align-items-center text-white left-panel">
@@ -42,10 +42,17 @@
 
       <!-- Right Side -->
       <div class="col-md-6 d-flex justify-content-center align-items-center bg-tertiary">
-        <div class="card p-4 shadow-sm form-card">
+        <div class="card p-5 shadow-sm form-card">
           <h4 class="text-center mb-3 fw-bold">Create Account</h4>
           <p class="text-center text-muted">Join CashbeeBank today</p>
           <div id="errorMessage" class="alert alert-danger text-center mb-3" style="display: none;">Please Fill in all inputs</div>
+          <div id="newError" class="alert alert-danger" style="display: none;" >Email Already in use</div>
+           <div id="errorAnother" class="alert alert-danger" style="display: none;" >Enter a Valid Email Address</div>
+          <div id="thirdError" class="alert alert-danger" style="display: none;" ></div> 
+
+
+         
+  
 
           <form>
             <div class="row mb-3">
@@ -70,29 +77,25 @@
             </div>
 
 
-            <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="terms" required />
+            <div class="mb-3">
               <label class="form-check-label" for="terms">
                 I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
               </label>
             </div>
-
-            <button type="submit" class="btn btn-primary w-100" onclick="createAccount()">Create Account</button>
-
             <div class="text-center mt-3">
-              <p class="mb-0">Already have an account? <a href="../sign in page/signin.html">Sign in</a></p>
+              <p class="mb-0">Already have an account? <a href="../signin_page/signin.html">Sign in</a></p>
             </div>
           </form>
+           <button type="button" class="btn btn-primary w-100" onclick="createAccount()">Create Account</button>
+
         </div>
       </div>
     </div>
   </div>
-  <script type="module" src="sign up.js"></script>
+  <script type="module" src="sign_up.js"></script>
 
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
-</body>
-</html>
