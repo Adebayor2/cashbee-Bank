@@ -10,7 +10,7 @@
     body.dark-mode {
       --primary: #5b8dff;
       --sidebar-bg: #111927;
-      --card-bg: #1a2332;
+      --card-bg: #c1c2c5;
       --text-color: #e4e4e4;
       --soft-bg: #0d1420;
     }
@@ -19,20 +19,24 @@
       background: var(--soft-bg);
       color: var(--text-color);
       transition: var(--transition);
+  
     }
 
     .sidebar {
       width: 250px;
       height: 100vh;
+      color: white;
       background: var(--sidebar-bg);
       position: fixed;
       transition: var(--transition);
-      border-right: 1px solid #e5e5e5;
+      border-right: 1px solid #000000;
+      background-color: rgb(21, 21, 85);
     }
 
     .sidebar a {
-      color: var(--text-color);
+      color: white;
       transition: var(--transition);
+
     }
 
     .sidebar.collapsed { transform: translateX(-100%); }

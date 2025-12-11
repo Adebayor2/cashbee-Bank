@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NairaBank Dashboard</title>
+  <title>CashBee Bank Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link rel="stylesheet" href="Dashboard.css">
@@ -14,17 +14,17 @@
 <!-- Sidebar -->
 <div id="sidebar" class="sidebar p-3">
   <h4 class="fw-bold mb-4 d-flex align-items-center justify-content-between">
-    <span><i class="fa-solid fa-landmark me-2"></i>NairaBank</span>
+    <span><i class="fa-solid fa-landmark me-2"></i>CashBee Bank</span>
     <i class="fa-solid fa-xmark d-md-none" id="closeSidebar" style="cursor:pointer; font-size:22px;"></i>
   </h4>
 
   <ul class="nav flex-column">
     <li class="nav-item mb-2"><a class="nav-link active" href="#"><i class="fa-solid fa-table-columns me-2"></i>Dashboard</a></li>
-    <li class="nav-item mb-2"><a class="nav-link" href="./profile_page.html"><i class="fa-solid fa-wallet me-2"></i>profile</a></li>
+    <li class="nav-item mb-2"><a class="nav-link" href="#"><i class="fa-solid fa-wallet me-2"></i>wallet</a></li>
     <li class="nav-item mb-2"><a class="nav-link" href="#"><i class="fa-solid fa-arrow-right-arrow-left me-2"></i>Transfers</a></li>
     <li class="nav-item mb-2"><a class="nav-link" href="#"><i class="fa-solid fa-list me-2"></i>Transactions</a></li>
     <li class="nav-item mb-2"><a class="nav-link" href="#"><i class="fa-solid fa-chart-line me-2"></i>Analytics</a></li>
-    <li class="nav-item mb-2"><a class="nav-link" href="#"><i class="fa-solid fa-gear me-2"></i>Settings</a></li>
+    <li class="nav-item mb-2"><a class="nav-link" href="../Dashboard/settings.html"><i class="fa-solid fa-gear me-2"></i>Settings</a></li>
   </ul>
 </div>
 
@@ -35,30 +35,34 @@
       <i class="fa-solid fa-bars menu-toggle d-md-none" id="menuToggle"></i>
       <div>
         <h3 class="fw-bold mb-0">Dashboard</h3>
-        <small class="text-muted">Welcome back, Adunni</small>
+        <div> 
+          <small><a href="../Dashboard/profile_page.html" style="text-decoration: none; color: black;"> <span id="show"></span></a></small>
+        </div>
       </div>
     </div>
 
     <div class="d-flex align-items-center gap-3">
       <i class="fa-solid fa-moon" id="darkModeToggle"></i>
-      <button class="btn btn-primary rounded-pill px-4"><i class="fa-solid fa-plus me-2"></i>New Transfer</button>
+      <a href="../Dashboard/Transferpage.html" style="text-decoration: none; color: whitesmoke;"><button class="btn btn-primary rounded-pill px-4"><i class="fa-solid fa-plus me-2"></i>New Transfer</button></a>
+      
     </div>
   </div>
 
   <div class="row g-4">
     <div class="col-lg-6">
-      <div class="card card-custom p-4 text-white" style="background: var(--primary);">
+      <div class="card card-custom p-4 text-white" style="
+  background: linear-gradient(135deg, #023aab, #3a96f9); ">
         <h6>Primary Account</h6>
-        <p class="fw-bold fs-3">₦2,847,650.00</p>
+        <p class="fw-bold fs-3" id="Balance"></p>
         <small>Available Balance</small>
       </div>
     </div>
 
     <div class="col-lg-6">
       <div class="card card-custom p-4">
-        <h6>Savings Account</h6>
-        <p class="fw-bold fs-3">₦1,245,320.50</p>
-        <small class="text-muted">Available Balance</small>
+        <h6> Account Number</h6>
+        <p class="fw-bold fs-3">₦9088562152</p>
+        <small class="text-muted">Premium  Account</small>
       </div>
     </div>
 
@@ -86,7 +90,7 @@
   </div>
 </div>
 
-<script>
+<script type="module">
   const menuToggle = document.getElementById('menuToggle');
   const sidebar = document.getElementById('sidebar');
   const darkModeToggle = document.getElementById('darkModeToggle');
@@ -100,6 +104,46 @@
     document.body.classList.toggle('dark-mode');
     darkModeToggle.classList.toggle('fa-sun');
   });
+
+
+  
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+   import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+   const firebaseConfig = {
+  apiKey: "AIzaSyD2pdUo-5GtiCHjv7vJVVP2h3UV2iaBqHg",
+  authDomain: "cashbee-bank.firebaseapp.com",
+  projectId: "cashbee-bank",
+  storageBucket: "cashbee-bank.firebasestorage.app",
+  messagingSenderId: "75477711466",
+  appId: "1:75477711466:web:110ffedbcf917270496813",
+  measurementId: "G-G40B1NRHWP"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const user = JSON.parse(localStorage.getItem('userInfo'));
+  document.getElementById('Balance').innerText = `₦${user.balance}`;
+  document.getElementById('show').innerText = `Welcome, ${user.fname} ${user.sname}`;
+
+
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+  console.log(user);
+  // show.innerHTML += `<p>Welcome ${user.displayName}</p>`
+  //  profilePic.innerHTML += `<img style="width:100px; height:80px; border-radius:50%;" src="${user.photoURL}" alt="User Photo" />`
+
+    
+  } else {
+
+   setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1000);
+    console.log("No user is signed in.");
+  }
+})
+
+
+
 </script>
 
 </body>

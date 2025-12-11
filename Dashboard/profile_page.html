@@ -78,8 +78,10 @@
   </div>
 
   <div class="card-custom mb-4 text-center">
-    <img src="https://via.placeholder.com/150" alt="Profile" class="profile-pic mb-3" />
-    <h4 class="fw-bold mb-1">Adunni Okafor</h4>
+    <!-- <img src="https://via.placeholder.com/150" alt="Profile" class="profile-pic mb-3" /> -->
+     <div id="profilePic"></div>
+        <div  id="show"></div>
+    
     <p class="text-muted">Premium Member</p>
     <button class="btn btn-edit mt-2"><i class="fa-solid fa-pen-to-square me-2"></i>Edit Profile</button>
   </div>
@@ -89,17 +91,17 @@
     <div class="row g-3">
       <div class="col-md-6">
         <span class="info-label">Full Name</span>
-        <div class="value-box">Adunni Okafor</div>
+        <div class="value-box" id="shown"></div>
       </div>
 
       <div class="col-md-6">
-        <span class="info-label">Email Address</span>
-        <div class="value-box">adunniokafor@gmail.com</div>
+        <span class="info-label" >Email Address</span>
+        <div class="value-box" id="showMail"></div>
       </div>
 
       <div class="col-md-6">
         <span class="info-label">Phone Number</span>
-        <div class="value-box">+234 810 456 7892</div>
+        <div class="value-box" id="pNum"></div>
       </div>
 
       <div class="col-md-6">
@@ -109,16 +111,63 @@
 
       <div class="col-md-6">
         <span class="info-label">Home Address</span>
-        <div class="value-box">12, Freedom Estate, Lagos</div>
+        <div class="value-box">Null</div>
       </div>
 
       <div class="col-md-6">
         <span class="info-label">Member Since</span>
-        <div class="value-box">Jan 12, 2021</div>
+        <div class="value-box" id="member"></div>
       </div>
     </div>
   </div>
 </div>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+   import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+   const firebaseConfig = {
+  apiKey: "AIzaSyD2pdUo-5GtiCHjv7vJVVP2h3UV2iaBqHg",
+  authDomain: "cashbee-bank.firebaseapp.com",
+  projectId: "cashbee-bank",
+  storageBucket: "cashbee-bank.firebasestorage.app",
+  messagingSenderId: "75477711466",
+  appId: "1:75477711466:web:110ffedbcf917270496813",
+  measurementId: "G-G40B1NRHWP"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+const user = JSON.parse(localStorage.getItem('userInfo'));
+    document.getElementById('pNum').innerText = `${user.phoneN}`;
+  document.getElementById('shown').innerText = `${user.fname} ${user.sname}`;
+
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+
+  console.log(user);
+
+  // show.innerHTML += `<h2>Welcome ${user.displayName}</h2>`
+//   shown.innerHTML += `<p> ${user.displayName}</p>`
+//   show.innerHTML += `<h4> ${user.displayName}</h4>`
+ showMail.innerHTML += `<p> ${user.email}</p>`
+ member.innerHTML += `<p> ${user.metadata.creationTime}</p>`
+
+ 
+   profilePic.innerHTML += `<img style="width:100px; height:80px; border-radius:50%;" src="${user.photoURL}" alt="User Photo" />`
+  
+  
+    
+  } else {
+
+   setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1000);
+    console.log("No user is signed in.");
+  }
+})
+
+</script>
 </body>
 </html>

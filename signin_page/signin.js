@@ -36,12 +36,11 @@ const dash = () => {
             passw: password.value,
         }
         const { mail, passw } = signIn
-        console.log(signIn);
+        // console.log(signIn);
         signInWithEmailAndPassword(auth, mail, passw)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
-                errorMessage.style.display = 'none'
+                // console.log(user);
                 errorMessage.style.display = 'none'
                 setTimeout(() => {
                     window.location.href = "../Dashboard/Dashboard.html"
@@ -53,7 +52,18 @@ const dash = () => {
 
                 if (errorCode === "auth/invalid-credential") {
                     errorMessage.style.display = 'block'
+                      setTimeout(() => {
+            errorMessage.style.display = 'none'
+          }, 1000);
                 }
+
+                         if (errorCode === "auth/network-request-failed") {
+          errorand.innerHTML = `<p>No internet connection</P>`;
+          errorand.style.display = 'block'
+          setTimeout(() => {
+            errorand.style.display = 'none'
+          }, 1000);
+        }
             });
 
     }
@@ -86,6 +96,7 @@ const googleSignin = () => {
                 }, 1000)
 
             }
+       
         });
 }
 const resetPassword = () => {
