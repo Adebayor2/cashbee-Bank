@@ -27,7 +27,7 @@ const dash = () => {
         showError.style.display = 'block'
         setTimeout(() => {
             showError.style.display = 'none'
-        }, 1000);
+        }, 1500);
 
     } else {
         showError.style.display = 'none'
@@ -44,7 +44,7 @@ const dash = () => {
                 errorMessage.style.display = 'none'
                 setTimeout(() => {
                     window.location.href = "../Dashboard/Dashboard.html"
-                }, 1000)
+                }, 1500)
             })
             .catch((error) => {
                 const errorCode = error.code;

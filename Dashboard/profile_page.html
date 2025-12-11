@@ -140,6 +140,7 @@ const auth = getAuth(app);
 
 
 const user = JSON.parse(localStorage.getItem('userInfo'));
+console.log(user);
     document.getElementById('pNum').innerText = `${user.phoneN}`;
   document.getElementById('shown').innerText = `${user.fname} ${user.sname}`;
 

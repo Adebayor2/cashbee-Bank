@@ -63,10 +63,10 @@ const createAccount = () => {
 
     }
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
-  firstName.value =""
-  lastName.value =""
-  email.value =""
-  phoneNum.value =""
+  // firstName.value =""
+  // lastName.value =""
+  // email.value =""
+  // phoneNum.value =""
     createUserWithEmailAndPassword(auth, emails, passwords)
       .then((userCredential) => {
         const user = userCredential.user;
