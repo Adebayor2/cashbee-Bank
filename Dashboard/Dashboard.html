@@ -121,28 +121,18 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebas
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-window.onload = () => {
-       const userInfo = {
-      fname: firstName.value,
-      sname: lastName.value,
-    mail: email.value,
-    balance:1000000,
-    phoneN:phoneNum.value
 
-    }
-}
+
 const user = JSON.parse(localStorage.getItem('userInfo'));
 console.log(user);
-  document.getElementById('Balance').innerText = `₦${user.balance}`;
+  document.getElementById('Balance').innerText = `₦ ${user.balance}`;
   document.getElementById('show').innerText = `Welcome, ${user.fname} ${user.sname}`;
 
 
   onAuthStateChanged(auth, (user) => {
   if (user) {
   console.log(user);
-  // show.innerHTML += `<p>Welcome ${user.displayName}</p>`
-  //  profilePic.innerHTML += `<img style="width:100px; height:80px; border-radius:50%;" src="${user.photoURL}" alt="User Photo" />`
-
+  
     
   } else {
 
