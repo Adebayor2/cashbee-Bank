@@ -41,7 +41,9 @@ const dash = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 // console.log(user);
+            
                 errorMessage.style.display = 'none'
+                localStorage.setItem("currentUser", mail);
                 setTimeout(() => {
                     window.location.href = "../Dashboard/Dashboard.html"
                 }, 1500)

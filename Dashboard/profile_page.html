@@ -125,7 +125,8 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
-   import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+   import { getDatabase, ref,  onValue, get  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+
    const firebaseConfig = {
   apiKey: "AIzaSyD2pdUo-5GtiCHjv7vJVVP2h3UV2iaBqHg",
   authDomain: "cashbee-bank.firebaseapp.com",
@@ -139,25 +140,23 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 
-const user = JSON.parse(localStorage.getItem('userInfo'));
-console.log(user);
-    document.getElementById('pNum').innerText = `${user.phoneN}`;
-  document.getElementById('shown').innerText = `${user.fname} ${user.sname}`;
+const users = JSON.parse(localStorage.getItem("cUsers")) || {};
+const currentUserEmail = localStorage.getItem("currentUser");
+console.log(users);
 
   onAuthStateChanged(auth, (user) => {
   if (user) {
-
   console.log(user);
+const currentUser = users.find(user => user.mail === currentUserEmail);
+console.log(currentUser);
 
-  // show.innerHTML += `<h2>Welcome ${user.displayName}</h2>`
-//   shown.innerHTML += `<p> ${user.displayName}</p>`
-//   show.innerHTML += `<h4> ${user.displayName}</h4>`
- showMail.innerHTML += `<p> ${user.email}</p>`
+if (currentUser) {
+    document.getElementById('pNum').innerText = `${currentUser.phoneN}`;
+  document.getElementById('shown').innerText = `${currentUser.fname} ${currentUser.sname}`;
+  document.getElementById('showMail').innerText = `${currentUser.mail}`;
  member.innerHTML += `<p> ${user.metadata.creationTime}</p>`
-
- 
    profilePic.innerHTML += `<img style="width:100px; height:80px; border-radius:50%;" src="${user.photoURL}" alt="User Photo" />`
-  
+}
   
     
   } else {

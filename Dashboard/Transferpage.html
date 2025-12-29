@@ -91,18 +91,25 @@
 
     <div class="card-custom mb-4">
       <h5 class="fw-bold mb-3">Transfer Details</h5>
-      <div class="alert alert-danger text-center " id="transError" style="display: none;"><span><i class="bi bi-exclamation-triangle-fill me-3"></i></span>Please fill all the required inputs</div>
-      <div class="alert alert-danger text-center " id="error2" style="display: none;"><span><i class="bi bi-exclamation-triangle-fill me-3"></i></span>Please Enter a valid Amount</div>
+      <div class="alert alert-danger text-center " id="transError" style="display: none;"><span><i
+            class="bi bi-exclamation-triangle-fill me-3"></i></span>Please fill all the required inputs</div>
+      <div class="alert alert-danger text-center " id="error2" style="display: none;"><span><i
+            class="bi bi-exclamation-triangle-fill me-3"></i></span>Please Enter a valid Amount</div>
+      <div class="alert alert-danger text-center " id="error3" style="display: none;"><span><i
+            class="bi bi-exclamation-triangle-fill me-3"></i></span>Insufficient Balance</div>
+<div class=" alert alert-success" style="display: none;" id="successMsg"></div>
+<div class="alert alert-danger" style="display: none;" id="error4"></div>
+<div class="alert alert-danger" style="display: none;" id="error5"></div>
 
 
-    
+
 
       <div class="mb-3">
         <label class="form-label fw-semibold">Recipient ID</label>
-        <input type="text" class="form-control" id="recipient"  placeholder="Enter account number or Email" />
+        <input type="text" class="form-control" id="recipient" placeholder="Enter account number or Email" />
       </div>
 
-     
+
 
       <div class="mb-3">
         <label class="form-label fw-semibold">Amount</label>
@@ -117,7 +124,8 @@
         <input type="text" class="form-control" placeholder="e.g Transport, Bills..." />
       </div>
 
-      <button type="button" class="btn bg-primary text-light w-100 mt-3" onclick="transferMoney()"><i class="fa-solid fa-paper-plane me-2"></i>Send Money</button>
+      <button type="button" class="btn bg-primary text-light w-100 mt-3" onclick="transferMoney()"><i
+          class="fa-solid fa-paper-plane me-2"></i>Send Money</button>
     </div>
     <script type="module">
 
@@ -136,40 +144,84 @@
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
 
-    const transferMoney =() => {
-         const amounts = Number(document.getElementById("amount").value);
-       const recipients = document.getElementById("recipient").value;
-  const users = JSON.parse(localStorage.getItem("users"));
-  console.log(users);
-  
+      const transferMoney = () => {
+        
+        if (recipient.value === "" || amount.value === "") {
+          transError.style.display = "block";
+          setTimeout(() => {
+            transError.style.display = "none";
+          }, 2000);
+          // alert("Please fill in all required fields.");
+        }
 
+      
 
-      if(recipient.value === "" || amount.value ===""){
-        transError.style.display = "block";
-        setTimeout(() => {
-          transError.style.display = "none";
-        }, 2000);
-        // alert("Please fill in all required fields.");
-       }   
+        else {
+      
+          const receiverEmail = document.getElementById("recipient").value;
+          const amounts = Number(document.getElementById("amount").value);
+
+          let user = JSON.parse(localStorage.getItem("cUsers")) || [];
+          const senderEmail = localStorage.getItem("currentUser"); 
+
+          const sender = user.find(u => u.mail === senderEmail);
+          const receiver = user.find(u => u.mail === receiverEmail);
+          
+
+          // console.log(user);
+          if (amounts > sender.balance) {
+             error3.style.display = "block";
+          setTimeout(() => {
+            error3.style.display = "none";
+          }, 2000);
+            return;
+          }
+            if (amounts <= 0) {
+          error2.style.display = "block";
+          setTimeout(() => {
+            error2.style.display = "none";
+          }, 2000);
+          return;
+        }
+            if(receiverEmail === senderEmail){
+              error4.innerHTML=`<p class=text-center>You cannot transfer money to yourself.</P>`
+                error4.style.display = "block"
+                   setTimeout(() => {
+            error4.style.display = "none";
+          }, 2000);
+
+          return;
+        }
+       
+       
+        if (!receiver) {
+             error5.innerHTML=`<p>Recipient not found. Please check the Recipient ID.</P>`
+                error5.style.display = "block"
+                   setTimeout(() => {
+            error5.style.display = "none";
+          }, 2000);
+          // alert("Recipient not found. Please check the Recipient ID.");
+       return;
+       }
+       
+
+          receiver.balance +=amounts;
+          sender.balance -=amounts;
+          localStorage.setItem("cUsers", JSON.stringify(user));
     
-else if(amounts <= 0){
-        error2.style.display = "block";
-        setTimeout(() => {
-          error2.style.display = "none";
-        }, 2000);
-       } 
-       
-       else {
-        const user = JSON.parse(localStorage.getItem("userInfo"));
-        const senderId = user.mail;
-        const senderBalance = user.balance;
-       
+          successMsg.innerHTML += `Transferred ₦${amounts} from ${senderEmail} to ${receiverEmail}.`
+          successMsg.style.display = "block";
+          setTimeout(() => {  
+            successMess.style.display = "none";
+          }, 2000);           
+                      
 
-}
+          console.log(`Transferred ₦${amounts} from ${senderId} to ${recipients}.`)
+          document.getElementById("recipient").value = "";
+          document.getElementById("amount").value = "";
+        window.location.href="Dashboard.html"
+      }
+
     }
-  
-
- 
-    
-  window.transferMoney = transferMoney;
+      window.transferMoney = transferMoney;
     </script>

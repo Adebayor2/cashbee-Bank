@@ -1,7 +1,6 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
 
 
@@ -11,25 +10,23 @@ const firebaseConfig = {
   apiKey: "AIzaSyD2pdUo-5GtiCHjv7vJVVP2h3UV2iaBqHg",
   authDomain: "cashbee-bank.firebaseapp.com",
   projectId: "cashbee-bank",
-  storageBucket: "cashbee-bank.firebasestorage.app",
-  messagingSenderId: "75477711466",
-  appId: "1:75477711466:web:110ffedbcf917270496813",
-  measurementId: "G-G40B1NRHWP"
-};
+    storageBucket: "cashbee-bank.firebasestorage.app",
+    messagingSenderId: "75477711466",
+    appId: "1:75477711466:web:110ffedbcf917270496813",
+    measurementId: "G-G40B1NRHWP"
+  };
 
-// Initialize Firebase
+  // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const database = getDatabase(app);
 
 
 
- const displayName= {
-  firstName:firstName.value,
-  lastName:lastName.value,
+let cashUsers = JSON.parse(localStorage.getItem("cUsers")) || [];
 
 
-  }
+
+
 
 const createAccount = () => {
   // alert('button is working')
@@ -43,37 +40,27 @@ const createAccount = () => {
 
 
   else {
+    
     const emails = document.getElementById("email").value
     const passwords = document.getElementById("password").value
-             const Name = {
-            first_name: firstName.value,
-            last_name: lastName.value,
-        
-            
-            
-        
+    const phone = document.getElementById("phoneNum").value
 
-}
-       const userInfo = {
-      fname: firstName.value,
-      sname: lastName.value,
-    mail: email.value,
-    balance:1000000,
-    phoneN:phoneNum.value
 
-    }
-    localStorage.setItem("userInfo", JSON.stringify(userInfo));
-  // firstName.value =""
-  // lastName.value =""
-  // email.value =""
-  // phoneNum.value =""
+
     createUserWithEmailAndPassword(auth, emails, passwords)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-    
 
-    
+       const userInfo =  {
+      fname: firstName.value,
+      sname: lastName.value,
+    mail: emails,
+    balance:10000,
+    phoneN:phone
+    }
+    cashUsers.push(userInfo);
+    localStorage.setItem("cUsers", JSON.stringify(cashUsers));
 sendEmailVerification(auth.currentUser)
   .then(() => {
             console.log('Email verification sent!');

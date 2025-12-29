@@ -121,23 +121,27 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebas
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+  const users = JSON.parse(localStorage.getItem("cUsers")) || {};
 
-
-const user = JSON.parse(localStorage.getItem('userInfo'));
-console.log(user);
-  // document.getElementById('Balance').innerText = `₦ ${user.balance}`;
-  document.getElementById('show').innerText = `Welcome, ${user.fname} ${user.sname}`;
-
+const currentUserEmail = localStorage.getItem("currentUser");
+console.log(users);
 
   onAuthStateChanged(auth, (user) => {
   if (user) {
   console.log(user);
   
+const currentUser = users.find(user => user.mail === currentUserEmail);
+console.log(currentUser);
+
+  if (currentUser) {
+  document.getElementById('Balance').innerText = `₦ ${currentUser.balance}`;
+  document.getElementById('show').innerText = `Welcome, ${currentUser.fname} ${currentUser.sname}`;
+  }
     
   } else {
 
    setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = '../signin_page/signin.html';
           }, 1500);
     console.log("No user is signed in.");
   }
